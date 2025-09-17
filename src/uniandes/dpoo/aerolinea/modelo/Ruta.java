@@ -1,14 +1,83 @@
 package uniandes.dpoo.aerolinea.modelo;
 
+import java.math.*;
+
 /**
  * Esta clase tiene la información de una ruta entre dos aeropuertos que cubre una aerolínea.
  */
 public class Ruta
 {
-    // TODO completar
+    private String horaSalida;
+    private String horaLlegada;
+    private String codigoRuta;
+    
+    private Aeropuerto destino;
+    private Aeropuerto origen;
 
+    public Ruta(Aeropuerto origen, Aeropuerto destino, String horaSalida, String horaLlegada, String codigoRuta) {
+		this.horaSalida = horaSalida;
+		this.horaLlegada = horaLlegada;
+		this.codigoRuta = codigoRuta;
+		this.destino = destino;
+		this.origen = origen;
+	}
 
-    /**
+	public String getHoraSalida() {
+		return horaSalida;
+	}
+
+	public void setHoraSalida(String horaSalida) {
+		this.horaSalida = horaSalida;
+	}
+
+	public String getHoraLlegada() {
+		return horaLlegada;
+	}
+
+	public void setHoraLlegada(String horaLlegada) {
+		this.horaLlegada = horaLlegada;
+	}
+
+	public String getCodigoRuta() {
+		return codigoRuta;
+	}
+
+	public void setCodigoRuta(String codigoRuta) {
+		this.codigoRuta = codigoRuta;
+	}
+
+	public Aeropuerto getDestino() {
+		return destino;
+	}
+
+	public void setDestino(Aeropuerto destino) {
+		this.destino = destino;
+	}
+
+	public Aeropuerto getOrigen() {
+		return origen;
+	}
+
+	public void setOrigen(Aeropuerto origen) {
+		this.origen = origen;
+	}
+	
+	public int getDuracion() {
+		int minSalida = getMinutos(this.horaSalida);
+		int horasSalida = getHoras(this.horaSalida);
+		
+		int minLlegada = getMinutos(this.horaLlegada);
+		int horasLlegada = getHoras(this.horaLlegada);
+		
+		int totalMin = Math.abs(minLlegada - minSalida) % 24;
+		int totalHoras = Math.abs(horasLlegada - horasSalida) % 24;
+		
+		int duracion = Math.round(totalHoras + (totalMin / 60));
+		
+		return duracion;
+	}
+
+	/**
      * Dada una cadena con una hora y minutos, retorna los minutos.
      * 
      * Por ejemplo, para la cadena '715' retorna 15.
