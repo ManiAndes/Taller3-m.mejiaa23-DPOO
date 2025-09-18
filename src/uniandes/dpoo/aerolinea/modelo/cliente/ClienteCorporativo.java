@@ -23,21 +23,12 @@ public class ClienteCorporativo extends Cliente
     
     @Override
 	public String getTipoCliente() {
-		return this.CORPORATIVO;
+		return CORPORATIVO;
 	}
 
 	@Override
 	public String getIdentificador() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public String getNombreEmpresa() {
-		return nombreEmpresa;
-	}
-
-	public void setNombreEmpresa(String nombreEmpresa) {
-		this.nombreEmpresa = nombreEmpresa;
+		return this.nombreEmpresa;
 	}
 
 	public int getTamanoEmpresa() {

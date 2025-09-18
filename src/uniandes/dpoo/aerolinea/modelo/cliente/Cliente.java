@@ -1,5 +1,9 @@
 package uniandes.dpoo.aerolinea.modelo.cliente;
+
 import java.util.*;
+
+import uniandes.dpoo.aerolinea.modelo.Vuelo;
+import uniandes.dpoo.aerolinea.tiquetes.Tiquete;
 
 public abstract class Cliente {
 	
@@ -15,16 +19,50 @@ public abstract class Cliente {
 	public abstract String getIdentificador();
 	
 	public void agregarTiquete(Tiquete tiquete) {
-		//TODO
+		
+		if (tiquete.esUsado()) {
+			this.tiquetesUsados.add(tiquete);
+			
+		} else {
+			this.tiquetesSinUsar.add(tiquete);
+		}
 	}
 	
 	public int calcularValorTotalTiquetes() {
-		// TODO
-		return 0;
+		
+		int valorTotal = 0;
+		
+		for (Iterator<Tiquete> tiquetesSinUsar = this.tiquetesSinUsar.iterator(); tiquetesSinUsar.hasNext();) {
+			
+			Tiquete nTiqueteSinUsar = tiquetesSinUsar.next();
+			valorTotal += nTiqueteSinUsar.getTarifa();
+			
+		}
+		
+		return valorTotal;
+		
 	}
 	
 	public void usarTiquetes(Vuelo vuelo) {
-		// TODO
+		
+		int pos = 0;
+		for (Iterator<Tiquete> tiquetesSinUsar = this.tiquetesSinUsar.iterator(); tiquetesSinUsar.hasNext();) {
+			
+			Tiquete nTiqueteSinUsar = tiquetesSinUsar.next();
+			
+			if (vuelo.equals(nTiqueteSinUsar.getVuelo())) {
+				
+				nTiqueteSinUsar.marcarComoUsado();
+				this.tiquetesUsados.add(nTiqueteSinUsar);
+				this.tiquetesSinUsar.remove(pos);
+				
+			}
+			
+			pos++;
+			
+		}
+		
+		
 	}
 
 }

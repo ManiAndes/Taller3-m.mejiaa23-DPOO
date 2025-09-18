@@ -1,7 +1,5 @@
 package uniandes.dpoo.aerolinea.modelo;
 
-import java.math.*;
-
 /**
  * Esta clase tiene la información de una ruta entre dos aeropuertos que cubre una aerolínea.
  */

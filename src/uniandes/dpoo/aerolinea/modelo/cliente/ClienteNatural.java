@@ -12,13 +12,12 @@ public class ClienteNatural extends Cliente {
 
 	@Override
 	public String getTipoCliente() {
-		return this.NATURAL;
+		return NATURAL;
 	}
 
 	@Override
 	public String getIdentificador() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.nombre;
 	}
 
 }

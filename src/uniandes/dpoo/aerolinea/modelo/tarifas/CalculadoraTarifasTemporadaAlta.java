@@ -9,14 +9,17 @@ public class CalculadoraTarifasTemporadaAlta extends CalculadoraTarifas {
 
 	@Override
 	protected int calcularCostoBase(Vuelo vuelo, Cliente cliente) {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		int distancia = calcularDistanciaVuelo(vuelo.getRuta());
+		int costoBase = distancia * COSTO_POR_KM;
+		
+		return costoBase;
+		
 	}
 
 	@Override
 	protected double calcularPorcentajeDescuento(Cliente cliente) {
-		// TODO Auto-generated method stub
-		return 0;
+		return 0;		
 	}
 
 }

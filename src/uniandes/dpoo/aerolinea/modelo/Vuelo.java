@@ -1,5 +1,7 @@
 package uniandes.dpoo.aerolinea.modelo;
 
+import uniandes.dpoo.aerolinea.modelo.cliente.Cliente;
+import uniandes.dpoo.aerolinea.modelo.tarifas.CalculadoraTarifas;
 import uniandes.dpoo.aerolinea.tiquetes.*;
 import java.util.*;
 
@@ -21,6 +23,7 @@ public class Vuelo {
 		this.ruta = ruta;
 		this.avion = avion;
 		this.fecha = fecha;
+		this.tiquetes = new HashMap<String, Tiquete>();
 	}
 	
 	//* Getters and setters
@@ -33,11 +36,11 @@ public class Vuelo {
 		this.ruta = ruta;
 	}
 
-	public Tiquete getTiquetes() {
-		return tiquetes;
+	public Collection<Tiquete> getTiquetes() {
+		return tiquetes.values();
 	}
 
-	public void setTiquetes(Tiquete tiquetes) {
+	public void setTiquetes(Map<String, Tiquete> tiquetes) {
 		this.tiquetes = tiquetes;
 	}
 
@@ -59,13 +62,23 @@ public class Vuelo {
 	
 	public int venderTiquetes(Cliente cliente, CalculadoraTarifas calculadora, int cantidad) {
 		
-		// TODO
-		return 0;
+		int tarifa = calculadora.calcularTarifa(this, cliente);
+		int valorTotal = cantidad * tarifa;
+		
+		for (int i = 0; i < cantidad; i++) {
+			
+			Tiquete nTiquete = GeneradorTiquetes.generarTiquete(this, cliente, tarifa);
+			nTiquete.marcarComoUsado();
+			this.tiquetes.put(nTiquete.getCodigo(), nTiquete);
+			
+		}
+		
+		return valorTotal;
+		
 	}
 	
 	public boolean equals(Object obj) {
-		// TODO
-		return false;
+		return this.equals(obj);
 	}
 
 }
