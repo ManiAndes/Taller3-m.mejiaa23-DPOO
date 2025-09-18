@@ -1,0 +1,30 @@
+{
+	"aviones": [
+		{
+			"nombre": "Northrop B-2 Spirit",
+			"capacidad": 2
+		},
+		{
+			"nombre": "Airbus A380",
+			"capacidad": 850
+		}
+	],
+	"vuelos": [
+		{
+			"horaSalida": "1015",
+			"horaLlegada": "1245",
+			"codigoRuta": "5632",
+			"latitud1": 76.45,
+			"longitud1": 42.32,
+			"nombreCiudad1": "Canberra",
+			"nombre1": "Intercontinental Airport of Canberra",
+			"codigo1": 1234,
+			"latitud2": 24.45,
+			"longitud2": 100.32,
+			"nombreCiudad2": "Tokyo",
+			"nombre2": "Intercontinental Airport of Tokyo",
+			"codigo2": 4321,
+			"fecha": "2025-09-28"
+		}
+	]
+}
