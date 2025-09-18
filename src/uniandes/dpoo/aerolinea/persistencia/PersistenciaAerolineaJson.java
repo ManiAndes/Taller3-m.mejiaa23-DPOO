@@ -27,6 +27,7 @@ public class PersistenciaAerolineaJson implements IPersistenciaAerolinea {
 		
 		cargarAviones( aerolinea, root.getJSONArray( "aviones" ) );
         cargarVuelos( aerolinea, root.getJSONArray( "vuelos" ) );
+        cargarRutasYAeropuertos( aerolinea, root.getJSONArray( "rutas" ), root.getJSONArray( "aeropuertos" ) );
 		
 	}
 
@@ -46,6 +47,16 @@ public class PersistenciaAerolineaJson implements IPersistenciaAerolinea {
     }
 	
 	private void cargarVuelos( Aerolinea aerolinea, JSONArray jVuelos ) throws ClienteRepetidoException
+    {
+        int numClientes = jVuelos.length( );
+        for( int i = 0; i < numClientes; i++ )
+        {
+            JSONObject avion = jVuelos.getJSONObject( i );
+            Vuelo nuevoVuelos = null;
+        }
+    }
+	
+	private void cargarRutasYAeropuertos( Aerolinea aerolinea, JSONArray jVuelos, JSONArray jAeropuertos ) throws ClienteRepetidoException
     {
         int numClientes = jVuelos.length( );
         for( int i = 0; i < numClientes; i++ )
